@@ -68,7 +68,7 @@ grunt.initConfig({
   sass: {
     dist: {
       options: {
-        includePaths: require('bourbon').includePaths,
+        loadPath: require('node-bourbon').includePaths,
         outputStyle: 'compressed'
       },
       files: {
