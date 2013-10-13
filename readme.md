@@ -4,17 +4,6 @@
 are looking for the original Ruby/Rails version, you can find it
 [here](https://github.com/thoughtbot/bourbon).*
 
-# A simple and lightweight mixin library for Sass
-Bourbon is a comprehensive library of sass mixins that are designed to be simple
-and easy to use. No configuration required. The mixins aim to be as vanilla as
-possible, meaning they should be as close to the original CSS syntax as possible.
-
-The mixins contain vendor specific prefixes for all CSS3 properties for support
-amongst modern browsers. The prefixes also ensure graceful degradation for older
-browsers that support only CSS3 prefixed properties. Bourbon uses SCSS syntax.
-
-##[Bourbon Documentation & Demo](http://bourbon.io)
-
 ## Requirements
 - [node](http://nodejs.org)
 - [node-sass](https://github.com/andrew/node-sass)
@@ -59,6 +48,14 @@ sass.render({
 });
 ```
 
+Import Bourbon at the beginning of your main scss file.
+All additional stylesheets must be imported below Bourbon:
+
+```scss
+@import "bourbon";
+@import "other/scss/partial";
+```
+
 # Grunt Usage
 
 Using the [grunt-sass](https://github.com/sindresorhus/grunt-sass) task:
@@ -94,20 +91,6 @@ grunt.initConfig({
   }
 });
 ```
-
-Import Bourbon at the beginning of your main scss file.
-All additional stylesheets must be imported below Bourbon:
-
-```scss
-@import "bourbon";
-@import "other/scss/partial";
-```
-
--------
-# [Bourbon Changelog](https://github.com/thoughtbot/bourbon/wiki)
-
-# [Browser support](https://github.com/thoughtbot/bourbon/wiki/Browser-Support)
--------
 
 Credits
 -------
