@@ -68,8 +68,24 @@ grunt.initConfig({
   sass: {
     dist: {
       options: {
-        loadPath: require('node-bourbon').includePaths,
-        outputStyle: 'compressed'
+        includePaths: require('node-bourbon').includePaths
+      },
+      files: {
+        'path/to/output.css': 'path/to/input.scss'
+      }
+    }
+  }
+});
+```
+
+Using the [grunt-contrib-sass](https://github.com/gruntjs/grunt-contrib-sass) task:
+
+```javascript
+grunt.initConfig({
+  sass: {
+    dist: {
+      options: {
+        loadPath: require('node-bourbon').includePaths
       },
       files: {
         'path/to/output.css': 'path/to/input.scss'
