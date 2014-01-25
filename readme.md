@@ -4,7 +4,9 @@
 are looking for the original Ruby/Rails version, you can find it
 [here](https://github.com/thoughtbot/bourbon).*
 
-## Requirements
+[![Build Status](https://travis-ci.org/lacroixdesign/node-bourbon.png?branch=master)](https://travis-ci.org/lacroixdesign/node-bourbon)
+
+# Requirements
 - [node](http://nodejs.org)
 - [node-sass](https://github.com/andrew/node-sass)
 
@@ -16,7 +18,7 @@ To install as a development dependency, run:
 npm install --save-dev node-bourbon
 ```
 
-If you need it for production, replace `--save-dev` with `--save`.
+If you need it in production, replace `--save-dev` with `--save`.
 
 # Usage
 
@@ -27,13 +29,11 @@ node-sass' `includePaths` option.
 var bourbon = require('node-bourbon').includePaths;
 ```
 
-You can then use this array in your options:
+You can then pass this array to your config options:
 
 ```javascript
 var sass    = require('node-sass')
   , bourbon = require('node-bourbon').includePaths;
-
-var paths = ['other/path', 'another/path'].concat(bourbon);
 
 sass.render({
   file: './application.scss',
@@ -43,13 +43,14 @@ sass.render({
   error: function(error) {
     console.log(error);
   },
-  includePaths: paths,
+  // If you have additional paths to include, do something like:
+  // includePaths: bourbon.concat('other/path', 'another/path'),
+  includePaths: bourbon,
   outputStyle: 'compressed'
 });
 ```
 
-Import Bourbon at the beginning of your main scss file.
-All additional stylesheets must be imported below Bourbon:
+Import Bourbon at the beginning of your main scss file:
 
 ```scss
 @import "bourbon";
@@ -58,7 +59,14 @@ All additional stylesheets must be imported below Bourbon:
 
 # Grunt Usage
 
-Using the [grunt-sass](https://github.com/sindresorhus/grunt-sass) task:
+### Using the grunt-sass task
+
+The [grunt-sass](https://github.com/sindresorhus/grunt-sass) task uses
+[node-sass](https://github.com/andrew/node-sass)
+([libsass](https://github.com/hcatlin/libsass)) underneath, and is the recommended
+way to use Grunt with node-bourbon.
+
+Example config:
 
 ```javascript
 grunt.initConfig({
@@ -75,7 +83,15 @@ grunt.initConfig({
 });
 ```
 
-Using the [grunt-contrib-sass](https://github.com/gruntjs/grunt-contrib-sass) task:
+### Using the grunt-contrib-sass task
+
+If you are using the Ruby version of Sass with node-bourbon, then you will need to use
+the [grunt-contrib-sass](https://github.com/gruntjs/grunt-contrib-sass) task instead.
+
+*Note that node-bourbon isn't tested against the Ruby version, however some dirty*
+*testing showed that it should work with v3.2 and 3.3.0.rc.2 of the gem. YMMV.*
+
+Example config:
 
 ```javascript
 grunt.initConfig({
@@ -115,4 +131,4 @@ the Bourbon library go to [thoughtbot, inc](http://thoughtbot.com/community):
 License
 -------
 
-node-bourbon is Copyright © 2013 Michael LaCroix. It is free software, and may be redistributed under the terms specified in the LICENSE file.
+node-bourbon is Copyright © 2013-2014 Michael LaCroix. It is free software, and may be redistributed under the terms specified in the LICENSE file.
