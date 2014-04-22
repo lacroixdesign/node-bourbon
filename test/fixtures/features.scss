@@ -28,32 +28,43 @@
 
 .background-image {
   @include background-image(url("/images/a.png"), linear-gradient(white 0, yellow 50%, transparent 50%));
-  @include background-image(linear-gradient(hsla(0, 100%, 100%, 0.25) 0%, hsla(0, 100%, 100%, 0.08) 50%, transparent 50%), 
-                             linear-gradient(#4e7ba3, darken(#4e7ba4, 10%)));
+  @include background-image(
+    linear-gradient(hsla(0, 100%, 100%, 0.25) 0%,
+    hsla(0, 100%, 100%, 0.08) 50%, transparent 50%),
+    linear-gradient(#4e7ba3, darken(#4e7ba4, 10%))
+  );
 }
 
 // DEPRECATED
-.background-size {
-  @include background-size(50% 100%);
-  @include background-size(50% 100%, 75% 100%);
-}
+// .background-size {
+//   @include background-size(50% 100%);
+//   @include background-size(50% 100%, 75% 100%);
+// }
 
 .border-image {
   @include border-image(url(/images/border.png) 27 repeat);
 }
 
 // DEPRECATED
-.box-shadow {
-  @include box-shadow(0 0 5px 3px hsla(0, 0%, 0%, 0.65));
-}
+// .box-shadow {
+//   @include box-shadow(0 0 5px 3px hsla(0, 0%, 0%, 0.65));
+// }
 
 .box-sizing {
   @include box-sizing(border-box);
 }
 
+.calc {
+  @include calc(width, '100% - 80px');
+}
+
 .columns {
   @include columns(12 8em);
   @include column-rule(1px solid green);
+}
+
+.filter {
+  @include filter(grayscale(blue));
 }
 
 .flex-box {
@@ -204,6 +215,18 @@ $gw-gutter: 40px;
 // Add-ons
 //
 
+.border-color {
+  @include border-color(red green null blue);
+}
+
+.border-style {
+  @include border-style(dashed null solid);
+}
+
+.border-width {
+  @include border-width(1em 20px null 100%);
+}
+
 .buttons button {
   @include button;
   @include button(pill);
@@ -212,6 +235,19 @@ $gw-gutter: 40px;
 
 .clearfix {
   @include clearfix;
+}
+
+.directional-property {
+  @include directional-property(border, width, 10px null 4px 3px);
+}
+
+.ellipsis {
+  @include ellipsis(50%);
+}
+
+.em {
+  font-size: em(12);
+  font-size: em(12, 24);
 }
 
 .font-family {
@@ -250,6 +286,14 @@ $gw-gutter: 40px;
   font-size: em(12, 24);
 }
 
+.margin {
+  @include margin(null 10px 3em 20vh);
+}
+
+.padding {
+  @include padding(20vh null 10px 3em);
+}
+
 .position {
   @include position(relative, 0px 0 0 100px);
 }
@@ -274,4 +318,10 @@ $gw-gutter: 40px;
 
 .triangle {
   @include triangle(12px, gray, down);
+  @include triangle(12px 6px, gray lavender, up-left);
+}
+
+.word-wrap {
+  @include word-wrap;
+  @include word-wrap(normal);
 }

@@ -11,16 +11,19 @@
 @import "helpers/shape-size-stripper";
 
 // Custom Functions
+@import "functions/color-lightness";
 @import "functions/flex-grid";
-@import "functions/grid-width";
 @import "functions/golden-ratio";
+@import "functions/grid-width";
 @import "functions/linear-gradient";
 @import "functions/modular-scale";
 @import "functions/px-to-em";
+@import "functions/px-to-rem";
 @import "functions/radial-gradient";
 @import "functions/strip-units";
 @import "functions/tint-shade";
 @import "functions/transition-property-name";
+@import "functions/unpack";
 
 // CSS3 Mixins
 @import "css3/animation";
@@ -31,7 +34,9 @@
 @import "css3/border-image";
 @import "css3/border-radius";
 @import "css3/box-sizing";
+@import "css3/calc";
 @import "css3/columns";
+@import "css3/filter";
 @import "css3/flex-box";
 @import "css3/font-face";
 @import "css3/hyphens";
@@ -50,6 +55,8 @@
 // Addons & other mixins
 @import "addons/button";
 @import "addons/clearfix";
+@import "addons/directional-values";
+@import "addons/ellipsis";
 @import "addons/font-family";
 @import "addons/hide-text";
 @import "addons/html5-input-types";
@@ -59,6 +66,7 @@
 @import "addons/size";
 @import "addons/timing-functions";
 @import "addons/triangle";
+@import "addons/word-wrap";
 
 // Soon to be deprecated Mixins
 @import "bourbon-deprecated-upcoming";
