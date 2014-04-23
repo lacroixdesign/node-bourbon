@@ -1,4 +1,8 @@
-# 1.2.0
+# 1.2.2
+
+- Update Bourbon to [v3.2.1](https://github.com/thoughtbot/bourbon/releases/tag/v3.2.1)
+
+# 1.2.1
 
 - Add [`with()`](https://github.com/lacroixdesign/node-bourbon#with-function) convenience method.
 
