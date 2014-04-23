@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>node-bourbon by lacroixdesign</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>node-bourbon</h1>
+        <h2>A node-sass port of Bourbon.</h2>
+        <a href="https://github.com/lacroixdesign/node-bourbon" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <p><a href="http://bourbon.io"><img src="http://bourbon.io/images/shared/bourbon-logo.png" alt="Bourbon Sass Mixin Library"></a></p>
+
+<p><em>This is a node-sass port of the <a href="http://bourbon.io">Bourbon</a> library. If you
+are looking for the original Ruby/Rails version, you can find it
+<a href="https://github.com/thoughtbot/bourbon">here</a>.</em></p>
+
+<p><a href="https://travis-ci.org/lacroixdesign/node-bourbon"><img src="https://travis-ci.org/lacroixdesign/node-bourbon.png?branch=master" alt="Build Status"></a></p>
+
+<h1>
+<a name="contents" class="anchor" href="#contents"><span class="octicon octicon-link"></span></a>Contents</h1>
+
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#installation">Installation</a></li>
+<li>
+<a href="#usage">Usage</a>
+
+<ul>
+<li><a href="#basic-usage">Basic Usage</a></li>
+<li><a href="#gulpjs-usage">gulp.js</a></li>
+<li><a href="#grunt-usage">Grunt</a></li>
+<li><a href="#node-sass-usage">node-sass</a></li>
+</ul>
+</li>
+<li><a href="#getting-help">Getting Help</a></li>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#credits">Credits</a></li>
+<li><a href="#license">License</a></li>
+</ul><h1>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h1>
+
+<ul>
+<li><a href="http://nodejs.org">node</a></li>
+<li>
+<a href="http://gulpjs.com">gulp.js</a> -or- <a href="http://gruntjs.com">Grunt</a> -or- <a href="https://github.com/andrew/node-sass">node-sass</a>
+</li>
+</ul><h1>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<p>To install as a development dependency, run:</p>
+
+<div class="highlight highlight-bash"><pre>npm install --save-dev node-bourbon
+</pre></div>
+
+<p>If you need it in production, replace <code>--save-dev</code> with <code>--save</code>.</p>
+
+<h1>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<h2>
+<a name="basic-usage" class="anchor" href="#basic-usage"><span class="octicon octicon-link"></span></a>Basic Usage</h2>
+
+<p>To use <code>node-bourbon</code> with tools like <a href="#gulpjs-usage">gulp.js</a>, <a href="#grunt-usage">Grunt</a>, or directly with <a href="#node-sass-usage">node-sass</a>, provide the path to Bourbon in your Sass config. There are a couple of convenience methods for this, depending on whether you want Sass to include additional directories or not.</p>
+
+<h3>
+<a name="with-function" class="anchor" href="#with-function"><span class="octicon octicon-link"></span></a>with() Function</h3>
+
+<p>The <code>with()</code> function will include any additional paths you pass as arguments.</p>
+
+<p>Returns an array of paths.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">bourbon</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-bourbon'</span><span class="p">);</span>
+<span class="c1">// Any of these will return an array of Bourbon paths plus your custom path(s)</span>
+<span class="nx">bourbon</span><span class="p">.</span><span class="kd">with</span><span class="p">(</span><span class="s1">'path/to/stylesheets'</span><span class="p">)</span>
+<span class="nx">bourbon</span><span class="p">.</span><span class="kd">with</span><span class="p">(</span><span class="s1">'path/to/stylesheets1'</span><span class="p">,</span> <span class="s1">'path/to/stylesheets2'</span><span class="p">)</span>
+<span class="nx">bourbon</span><span class="p">.</span><span class="kd">with</span><span class="p">([</span><span class="s1">'path/to/stylesheets1'</span><span class="p">,</span> <span class="s1">'path/to/stylesheets2'</span><span class="p">])</span>
+</pre></div>
+
+<h3>
+<a name="includepaths-property" class="anchor" href="#includepaths-property"><span class="octicon octicon-link"></span></a>includePaths Property</h3>
+
+<p>The <code>includePaths</code> property returns an array of Bourbon's paths to use in your config.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">bourbon</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-bourbon'</span><span class="p">);</span>
+<span class="nx">bourbon</span><span class="p">.</span><span class="nx">includePaths</span> <span class="c1">// Array of Bourbon paths</span>
+</pre></div>
+
+<h3>
+<a name="stylesheet-usage" class="anchor" href="#stylesheet-usage"><span class="octicon octicon-link"></span></a>Stylesheet usage</h3>
+
+<p>Use either method above with the Sass config for your chosen tool (gulp.js, Grunt, etc.), then it's business as usual for Bourbon in your stylesheet:</p>
+
+<div class="highlight highlight-scss"><pre><span class="k">@import</span> <span class="s2">"bourbon"</span><span class="p">;</span>
+</pre></div>
+
+<h2>
+<a name="gulpjs-usage" class="anchor" href="#gulpjs-usage"><span class="octicon octicon-link"></span></a>gulp.js Usage</h2>
+
+<p>Using the <a href="https://github.com/dlmanning/gulp-sass">gulp-sass</a> plugin.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">sass</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-sass'</span><span class="p">);</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'sass'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">'path/to/input.scss'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">sass</span><span class="p">({</span>
+      <span class="c1">// includePaths: require('node-bourbon').with('other/path', 'another/path')</span>
+      <span class="c1">// - or -</span>
+      <span class="nx">includePaths</span><span class="o">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-bourbon'</span><span class="p">).</span><span class="nx">includePaths</span>
+    <span class="p">}))</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">'path/to/output.css'</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+
+<h2>
+<a name="grunt-usage" class="anchor" href="#grunt-usage"><span class="octicon octicon-link"></span></a>Grunt Usage</h2>
+
+<h3>
+<a name="using-grunt-sass" class="anchor" href="#using-grunt-sass"><span class="octicon octicon-link"></span></a>Using <em>grunt-sass</em>
+</h3>
+
+<p>The <a href="https://github.com/sindresorhus/grunt-sass">grunt-sass</a> task uses
+<a href="https://github.com/andrew/node-sass">node-sass</a>
+(<a href="https://github.com/hcatlin/libsass">LibSass</a>) underneath, and is the recommended
+way to use Grunt with node-bourbon.</p>
+
+<p>Example config:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+  <span class="nx">sass</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">dist</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+        <span class="c1">// includePaths: require('node-bourbon').with('other/path', 'another/path')</span>
+        <span class="c1">// - or -</span>
+        <span class="nx">includePaths</span><span class="o">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-bourbon'</span><span class="p">).</span><span class="nx">includePaths</span>
+      <span class="p">},</span>
+      <span class="nx">files</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">'path/to/output.css'</span><span class="o">:</span> <span class="s1">'path/to/input.scss'</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>
+<a name="using-grunt-contrib-sass" class="anchor" href="#using-grunt-contrib-sass"><span class="octicon octicon-link"></span></a>Using <em>grunt-contrib-sass</em>
+</h3>
+
+<p>If you are using the Ruby version of Sass with node-bourbon, then you will need to use
+the <a href="https://github.com/gruntjs/grunt-contrib-sass">grunt-contrib-sass</a> task instead.</p>
+
+<p><em>Note that node-bourbon is <strong>NOT</strong> tested against the <strong>Ruby</strong> version – only against <strong>LibSass</strong>.</em></p>
+
+<p>Example config:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+  <span class="nx">sass</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">dist</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+        <span class="c1">// loadPath: require('node-bourbon').with('other/path', 'another/path')</span>
+        <span class="c1">// - or -</span>
+        <span class="nx">loadPath</span><span class="o">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-bourbon'</span><span class="p">).</span><span class="nx">includePaths</span>
+      <span class="p">},</span>
+      <span class="nx">files</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">'path/to/output.css'</span><span class="o">:</span> <span class="s1">'path/to/input.scss'</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+<h2>
+<a name="node-sass-usage" class="anchor" href="#node-sass-usage"><span class="octicon octicon-link"></span></a>node-sass Usage</h2>
+
+<p>Using it directly with <a href="https://github.com/andrew/node-sass">node-sass</a>.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">sass</span>    <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-sass'</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">bourbon</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-bourbon'</span><span class="p">);</span>
+
+<span class="nx">sass</span><span class="p">.</span><span class="nx">render</span><span class="p">({</span>
+  <span class="nx">file</span><span class="o">:</span> <span class="s1">'./application.scss'</span><span class="p">,</span>
+  <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">css</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">css</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="c1">// includePaths: bourbon.with('other/path', 'another/path'),</span>
+  <span class="c1">// - or -</span>
+  <span class="nx">includePaths</span><span class="o">:</span> <span class="nx">bourbon</span><span class="p">.</span><span class="nx">includePaths</span><span class="p">,</span>
+  <span class="nx">outputStyle</span><span class="o">:</span> <span class="s1">'compressed'</span>
+<span class="p">});</span>
+</pre></div>
+
+<h1>
+<a name="getting-help" class="anchor" href="#getting-help"><span class="octicon octicon-link"></span></a>Getting Help</h1>
+
+<p>Feel free to tweet me with questions <a href="https://twitter.com/iamlacroix">@iamlacroix</a>, or <a href="https://github.com/lacroixdesign/node-bourbon/issues">open a ticket</a> on GitHub.</p>
+
+<h1>
+<a name="testing" class="anchor" href="#testing"><span class="octicon octicon-link"></span></a>Testing</h1>
+
+<p><code>node-bourbon</code> is tested against the examples provided in the 
+<a href="http://bourbon.io/docs">Bourbon documentation</a>. The tests check for compile 
+errors, so if a feature compiles but the expected output is incorrect, be sure 
+to <a href="https://github.com/lacroixdesign/node-bourbon/issues">open a ticket</a>.</p>
+
+<p>Run the tests with:</p>
+
+<pre><code>make test
+</code></pre>
+
+<h1>
+<a name="credits" class="anchor" href="#credits"><span class="octicon octicon-link"></span></a>Credits</h1>
+
+<p>This node-sass port is maintained by Michael LaCroix, however all credits for
+the Bourbon library go to <a href="http://thoughtbot.com/community">thoughtbot, inc</a>:</p>
+
+<blockquote>
+<p><img src="http://thoughtbot.com/images/tm/logo.png" alt="thoughtbot"></p>
+
+<p>Bourbon is maintained and funded by <a href="http://thoughtbot.com/community">thoughtbot, inc</a></p>
+
+<p>The names and logos for thoughtbot are trademarks of thoughtbot, inc.</p>
+
+<p>Got questions? Need help? Tweet at <a href="http://twitter.com/phillapier">@phillapier</a>.</p>
+</blockquote>
+
+<h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>node-bourbon is Copyright © 2013-2014 Michael LaCroix. It is free software, and may be redistributed under the terms specified in the LICENSE file.</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/lacroixdesign/node-bourbon/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/lacroixdesign/node-bourbon/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/lacroixdesign/node-bourbon"></a> is maintained by <a href="https://github.com/lacroixdesign">lacroixdesign</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
