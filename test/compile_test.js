@@ -1,14 +1,14 @@
 var expect  = require('chai').expect
   , sass    = require('node-sass')
-  , bourbon = require('../').includePaths
+  , bourbon = require('../')
   , fs      = require('fs');
 
-describe('node-bourbon', function() {
+describe('compiling bourbon', function() {
 
   it('should compile to css when importing Bourbon', function() {
     var generatedCss = sass.renderSync({
       file: __dirname + '/fixtures/compile.scss',
-      includePaths: bourbon,
+      includePaths: bourbon.includePaths,
       outputStyle: 'expanded'
     });
     var expectedCssFile = __dirname + '/expectations/compile.css';
@@ -19,7 +19,7 @@ describe('node-bourbon', function() {
   it('should not throw errors for Bourbon features', function(done) {
     sass.render({
       file: __dirname + '/fixtures/features.scss',
-      includePaths: bourbon,
+      includePaths: bourbon.includePaths,
       error: function(err) {
         throw new Error(err);
       },

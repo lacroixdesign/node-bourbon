@@ -1,9 +1,17 @@
 var path = require('path');
 
+function includePaths() {
+  return [path.join(__dirname, 'assets/stylesheets')];
+}
+
 module.exports = {
 
-  includePaths: [
-    path.join(__dirname, 'assets/stylesheets')
-  ]
+  includePaths: includePaths(),
+
+  with: function() {
+    var paths  = Array.prototype.slice.call(arguments);
+    var result = [].concat.apply(includePaths(), paths);
+    return result;
+  }
 
 };
