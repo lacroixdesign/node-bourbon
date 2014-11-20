@@ -1,44 +1,26 @@
-@mixin size($size) {
-  @if length($size) == 1 {
-    @if $size == auto {
-      width:  $size;
-      height: $size;
-    }
+// Set `width` and `height` in a single statement
 
-    @else if unitless($size) {
-      width:  $size + px;
-      height: $size + px;
-    }
+@mixin size($value) {
+  $width: nth($value, 1);
+  $height: $width;
 
-    @else if not(unitless($size)) {
-      width:  $size;
-      height: $size;
-    }
+  @if length($value) > 1 {
+    $height: nth($value, 2);
   }
 
-  // Width x Height
-  @if length($size) == 2 {
-    $width:  nth($size, 1);
-    $height: nth($size, 2);
+  @if is-size($height) {
+    height: $height;
+  }
 
-    @if $width == auto {
-      width: $width;
-    }
-    @else if not(unitless($width)) {
-      width: $width;
-    }
-    @else if unitless($width) {
-      width: $width + px;
-    }
+  @else {
+    @warn "`#{$height}` is not a valid length for the `$height` parameter in the `size` mixin.";
+  }
 
-    @if $height == auto {
-      height: $height;
-    }
-    @else if not(unitless($height)) {
-      height: $height;
-    }
-    @else if unitless($height) {
-      height: $height + px;
-    }
+  @if is-size($width) {
+    width: $width;
+  }
+
+  @else {
+    @warn "`#{$width}` is not a valid length for the `$width` parameter in the `size` mixin.";
   }
 }
