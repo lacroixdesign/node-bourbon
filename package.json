@@ -1,6 +1,6 @@
 {
   "name": "node-bourbon",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "node-sass port of thoughtbot's Bourbon library",
   "main": "index.js",
   "scripts": {

@@ -1,3 +1,7 @@
+# 1.2.4
+
+- Update Bourbon to [v4.0.2](https://github.com/thoughtbot/bourbon/releases/tag/v4.0.2)
+
 # 1.2.3
 
 - The [position mixin](http://bourbon.io/docs/#position) now accepts `null`. Ex: `@include position(relative, 0px null null 100px);`
