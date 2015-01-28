@@ -6,14 +6,14 @@ var expect  = require('chai').expect
 describe('compiling bourbon', function() {
 
   it('should compile to css when importing Bourbon', function() {
-    var generatedCss = sass.renderSync({
+    var output = sass.renderSync({
       file: __dirname + '/fixtures/compile.scss',
       includePaths: bourbon.includePaths,
       outputStyle: 'expanded'
     });
     var expectedCssFile = __dirname + '/expectations/compile.css';
     var expectedCss     = fs.readFileSync(expectedCssFile, {encoding: 'utf8'});
-    expect(generatedCss).to.eq(expectedCss);
+    expect(output.css).to.eq(expectedCss);
   });
 
   it('should not throw errors for Bourbon features', function(done) {
