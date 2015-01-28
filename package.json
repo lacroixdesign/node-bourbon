@@ -20,8 +20,8 @@
     "url": "https://github.com/lacroixdesign/node-bourbon/issues"
   },
   "devDependencies": {
-    "chai": "~1.8.1",
-    "mocha": "~1.14.0",
-    "node-sass": "~0.8.6"
+    "chai": "^1.10.0",
+    "mocha": "^2.1.0",
+    "node-sass": "^1.2.3"
   }
 }
