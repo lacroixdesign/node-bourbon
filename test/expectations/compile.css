@@ -1,4 +1,4 @@
-body:after {
+body::after {
+  clear: both;
   content: "";
-  display: table;
-  clear: both; }
+  display: table; }

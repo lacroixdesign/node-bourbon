@@ -21,7 +21,11 @@ describe('compiling bourbon', function() {
       file: __dirname + '/fixtures/features.scss',
       includePaths: bourbon.includePaths,
       error: function(err) {
-        throw new Error(err);
+        var msg = err.message +
+                  '\nFile:\n\t' + err.file +
+                  ':' + err.line +
+                  ':' + err.column;
+        throw new Error(msg);
       },
       success: function(css) {
         done();
