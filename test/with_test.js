@@ -5,16 +5,22 @@ function partialsDir(path) {
   return __dirname + '/fixtures/concat/' + path;
 }
 
+function errorHandler(err) {
+  var msg = err.message +
+            '\nFile:\n\t' + err.file +
+            ':' + err.line +
+            ':' + err.column;
+  throw new Error(msg);
+}
+
 describe('#with function', function() {
 
   it('should concat string paths using #with', function(done) {
     sass.render({
       file: __dirname + '/fixtures/concat.scss',
       includePaths: bourbon.with(partialsDir('dir1'), partialsDir('dir2'), partialsDir('dir3')),
-      error: function(err) {
-        throw new Error(err);
-      },
-      success: function(css) {
+      error: errorHandler,
+      success: function() {
         done();
       }
     });
@@ -24,10 +30,8 @@ describe('#with function', function() {
     sass.render({
       file: __dirname + '/fixtures/concat.scss',
       includePaths: bourbon.with([partialsDir('dir1')], [partialsDir('dir2')], [partialsDir('dir3')]),
-      error: function(err) {
-        throw new Error(err);
-      },
-      success: function(css) {
+      error: errorHandler,
+      success: function() {
         done();
       }
     });
@@ -37,10 +41,8 @@ describe('#with function', function() {
     sass.render({
       file: __dirname + '/fixtures/concat.scss',
       includePaths: bourbon.with([partialsDir('dir1'), partialsDir('dir2')], partialsDir('dir3')),
-      error: function(err) {
-        throw new Error(err);
-      },
-      success: function(css) {
+      error: errorHandler,
+      success: function() {
         done();
       }
     });

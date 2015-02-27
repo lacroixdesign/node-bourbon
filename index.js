@@ -1,7 +1,10 @@
 var path = require('path');
+var bourbonEntryPoint = require.resolve('bourbon');
+
+var bourbonDir = path.dirname(bourbonEntryPoint);
 
 function includePaths() {
-  return [path.join(__dirname, 'assets/stylesheets')];
+  return [bourbonDir];
 }
 
 module.exports = {

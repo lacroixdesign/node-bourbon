@@ -1,7 +1,7 @@
 {
   "name": "node-bourbon",
-  "version": "1.2.3",
-  "description": "node-sass port of thoughtbot's Bourbon library",
+  "version": "4.2.1-beta1",
+  "description": "node-sass wrapper for thoughtbot's bourbon library",
   "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/mocha --reporter spec --recursive --growl"
@@ -22,6 +22,9 @@
   "devDependencies": {
     "chai": "^1.10.0",
     "mocha": "^2.1.0",
-    "node-sass": "^1.2.3"
+    "node-sass": "^2.0.0"
+  },
+  "dependencies": {
+    "bourbon": "4.2.1"
   }
 }
