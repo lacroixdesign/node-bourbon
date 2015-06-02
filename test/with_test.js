@@ -19,10 +19,9 @@ describe('#with function', function() {
     sass.render({
       file: __dirname + '/fixtures/concat.scss',
       includePaths: bourbon.with(partialsDir('dir1'), partialsDir('dir2'), partialsDir('dir3')),
-      error: errorHandler,
-      success: function() {
-        done();
-      }
+      error: errorHandler
+    }, function(err, res) {
+      done();
     });
   });
 
@@ -30,10 +29,9 @@ describe('#with function', function() {
     sass.render({
       file: __dirname + '/fixtures/concat.scss',
       includePaths: bourbon.with([partialsDir('dir1')], [partialsDir('dir2')], [partialsDir('dir3')]),
-      error: errorHandler,
-      success: function() {
-        done();
-      }
+      error: errorHandler
+    }, function() {
+      done();
     });
   });
 
@@ -41,10 +39,9 @@ describe('#with function', function() {
     sass.render({
       file: __dirname + '/fixtures/concat.scss',
       includePaths: bourbon.with([partialsDir('dir1'), partialsDir('dir2')], partialsDir('dir3')),
-      error: errorHandler,
-      success: function() {
-        done();
-      }
+      error: errorHandler
+    }, function() {
+      done();
     });
   });
 
