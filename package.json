@@ -25,6 +25,6 @@
     "node-sass": "^3.0.0"
   },
   "dependencies": {
-    "bourbon": "4.2.3"
+    "bourbon": "^4.2.6"
   }
 }
