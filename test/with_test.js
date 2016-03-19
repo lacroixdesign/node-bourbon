@@ -21,6 +21,7 @@ describe('#with function', function() {
       includePaths: bourbon.with(partialsDir('dir1'), partialsDir('dir2'), partialsDir('dir3')),
       error: errorHandler
     }, function(err, res) {
+      if (err) return done(err);
       done();
     });
   });
@@ -30,7 +31,8 @@ describe('#with function', function() {
       file: __dirname + '/fixtures/concat.scss',
       includePaths: bourbon.with([partialsDir('dir1')], [partialsDir('dir2')], [partialsDir('dir3')]),
       error: errorHandler
-    }, function() {
+    }, function(err, res) {
+      if (err) return done(err);
       done();
     });
   });
@@ -40,7 +42,8 @@ describe('#with function', function() {
       file: __dirname + '/fixtures/concat.scss',
       includePaths: bourbon.with([partialsDir('dir1'), partialsDir('dir2')], partialsDir('dir3')),
       error: errorHandler
-    }, function() {
+    }, function(err, res) {
+      if (err) return done(err);
       done();
     });
   });
