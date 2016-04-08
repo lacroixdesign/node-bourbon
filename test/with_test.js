@@ -1,5 +1,7 @@
-var sass    = require('node-sass')
-  , bourbon = require('../');
+const chai = require('chai');
+const assert = chai.assert;
+const sass = require('node-sass');
+const bourbon = require('../');
 
 function partialsDir(path) {
   return __dirname + '/fixtures/concat/' + path;
@@ -14,6 +16,11 @@ function errorHandler(err) {
 }
 
 describe('#with function', function() {
+
+  it('should return an array of paths', function() {
+    assert.isArray(bourbon.with());
+    assert.isString(bourbon.with()[0], 'first #with function path');
+  });
 
   it('should concat string paths using #with', function(done) {
     sass.render({
