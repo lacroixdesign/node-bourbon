@@ -1,10 +1,10 @@
-[![Bourbon Sass Mixin Library](http://bourbon.io/images/shared/bourbon-logo.png)](http://bourbon.io)
+[![Bourbon Sass Mixin Library](http://images.thoughtbot.com/bourbon/bourbon-logo.svg)](http://bourbon.io)
 
 *This is a node-sass port of the [Bourbon](http://bourbon.io) library. If you
 are looking for the original Ruby/Rails version, you can find it
 [here](https://github.com/thoughtbot/bourbon).*
 
-[![Build Status](https://travis-ci.org/lacroixdesign/node-bourbon.png?branch=master)](https://travis-ci.org/lacroixdesign/node-bourbon)
+[![Build Status](https://travis-ci.org/lacroixdesign/node-bourbon.svg?branch=master)](https://travis-ci.org/lacroixdesign/node-bourbon)
 
 # Contents
 
