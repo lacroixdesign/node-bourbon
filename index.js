@@ -6,6 +6,6 @@ module.exports = {
 
   with: function() {
     var paths  = Array.prototype.slice.call(arguments);
-    return [].concat.apply([bourbon.includePaths], paths);
+    return [].concat.apply(bourbon.includePaths, paths);
   }
 };
